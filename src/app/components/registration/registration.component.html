@@ -1,0 +1,33 @@
+<div class="pt-5" style="height: 100%;">
+  <div class="text-center row justify-content-md-center" style="max-width: 100%">
+    <!--  <div th:if="${param.error}">-->
+    <!--    Invalid username and password.-->
+    <!--  </div>-->
+    <!--  <div th:if="${param.logout}">-->
+    <!--    You have been logged out.-->
+    <!--  </div>-->
+    <form class="col-md-4" method="post">
+      <h1 class="h4 mb-3 font-weight-normal">Зареєструйтеся</h1>
+      <label for="firstName" class="sr-only">Ім'я</label>
+      <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Ім'я" required=""
+             autofocus="">
+      <label for="lastName" class="sr-only">Прізвище</label>
+      <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Прізвище" required="">
+      <label for="username" class="sr-only">Username</label>
+      <input type="text" name="username" id="username" class="form-control" placeholder="Username" required="">
+      <label for="phone" class="sr-only">Телефон</label>
+      <input type="tel" name="phone" id="phone" class="form-control" placeholder="Телефон" required="">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Пароль" required="">
+
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Зареєструватися</button>
+      <br>
+      <h1 class="h4 mb-3 font-weight-normal">Зареєстровані?</h1>
+      <a id="enter" class="btn btn-lg btn-primary btn-block" type="button">Увійти</a>
+      <p class="mt-5 mb-3 text-muted">©2020</p>
+    </form>
+  </div>
+</div>

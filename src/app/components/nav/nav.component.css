@@ -1,0 +1,32 @@
+nav {
+  background: #000;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+a:active {
+  color: #ffbd30;
+}
+
+a {
+  color: #fff;
+}
+
+button:hover {
+  background: #fff;
+  color: #ffbd30;
+  border: #ffbd30;
+}
+
+button {
+  background: #ffbd30;
+  color: #000;
+  border: #fff;
+}
+
+input {
+  border: #ffbd30;
+}
+
+input:active {
+  border: #ffbd30;
+}
