@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../services/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,14 +8,23 @@ import {LoginService} from '../../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  public isLogged = false;
+  public email: string;
+  public password: string;
 
   constructor(
+    private router: Router,
     private loginService: LoginService
   ) {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('isLogged') === 'true') {
+      this.router.navigate(['/task']);
+    } else {
+      localStorage.setItem('isLogged', 'false');
+      localStorage.setItem('refresh', '');
+      localStorage.setItem('access', '');
+    }
   }
 
   // "id": 15,
@@ -26,10 +36,10 @@ export class LoginComponent implements OnInit {
   // "last_name": "user",
   // "is_active": true
   login() {
-    this.loginService.login('user23@user.com', '1234qwer').subscribe((token) => {
-      console.log(token.refresh);
-      alert(token.refresh);
-      console.log(token.access);
+    this.loginService.login(this.email, this.password).subscribe((token) => {
+      localStorage.setItem('refresh', token.refresh);
+      localStorage.setItem('access', token.access);
+      this.router.navigate(['/task']);
     });
   }
 }

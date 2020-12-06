@@ -9,8 +9,6 @@ import {Tokens} from '../models/tokens';
   providedIn: 'root'
 })
 export class LoginService {
-  token: string;
-
   constructor(
     private httpClient: HttpClient
   ) {
@@ -21,6 +19,7 @@ export class LoginService {
   }
 
   public login(email: string, password: string): Observable<Tokens> {
+    localStorage.setItem('isLogged', 'true');
     return this.httpClient.post<Tokens>(Urls.LOGIN, {email, password});
   }
 
@@ -30,17 +29,31 @@ export class LoginService {
 
   // tslint:disable-next-line:variable-name
   public updateUser(id: number, first_name: string, last_name: string, token: string): Observable<any> {
-    const heads = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    return this.httpClient.put<any>(Urls.USER_UPDATE + id + '/', {first_name, last_name}, {headers: heads});
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token   // this is our token from the UserService (see Part 1)
+      })
+    };
+    return this.httpClient.put<any>(Urls.USER_UPDATE + id + '/', {first_name, last_name}, httpOptions);
   }
 
   public deleteUser(id: number, token: string): Observable<any> {
-    const heads = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    return this.httpClient.delete<any>(Urls.USER_DELETE + id + '/', {headers: heads});
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token   // this is our token from the UserService (see Part 1)
+      })
+    };
+    return this.httpClient.delete<any>(Urls.USER_DELETE + id + '/', httpOptions);
   }
 
+  public getInfo(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('access')   // this is our token from the UserService (see Part 1)
+      })
+    };
+    return this.httpClient.get<any>('http://188cdd7456b1.ngrok.io/users/14/', httpOptions);
+  }
 }

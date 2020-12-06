@@ -6,4 +6,5 @@ export class Urls {
   public static ACCESS_TOKEN = `${environment.apiUrl}/users/tokens/refresh/`;
   public static USER_UPDATE = `${environment.apiUrl}/users/`;
   public static USER_DELETE = `${environment.apiUrl}/users/`;
+  public static CREATE_TASK = `${environment.apiUrl}/object-detection/`;
 }
