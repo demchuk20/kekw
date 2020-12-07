@@ -14,8 +14,7 @@ export class TaskComponent implements OnInit {
   public convertedImage: any;
 
   constructor(private router: Router,
-              private taskService: TaskService,
-              private loginService: LoginService
+              private taskService: TaskService
   ) {
   }
 
@@ -27,9 +26,6 @@ export class TaskComponent implements OnInit {
 
   create_task() {
     console.log(this.url);
-    this.loginService.getInfo().subscribe((o: any) => {
-      console.log(o);
-    });
     this.taskService.create_task(this.url).subscribe((task: Task) => {
       console.log(task);
       this.convertedImage = 'data:image/jpeg;base64,' + task.image;

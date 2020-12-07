@@ -48,12 +48,12 @@ export class LoginService {
     return this.httpClient.delete<any>(Urls.USER_DELETE + id + '/', httpOptions);
   }
 
-  public getInfo(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + localStorage.getItem('access')   // this is our token from the UserService (see Part 1)
-      })
-    };
-    return this.httpClient.get<any>('http://188cdd7456b1.ngrok.io/users/14/', httpOptions);
-  }
+  // public getInfo(): Observable<any> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       Authorization: 'Bearer ' + localStorage.getItem('access')   // this is our token from the UserService (see Part 1)
+  //     })
+  //   };
+  //   return this.httpClient.get<any>('http://188cdd7456b1.ngrok.io/users/14/', httpOptions);
+  // }
 }
